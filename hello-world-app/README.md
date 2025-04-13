@@ -1,50 +1,29 @@
-# Welcome to your Expo app 👋
+Input
+Function Main 
+This program outputs my name, degree program, and school name with a yellow background. 
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+	Create container to hold the information that is being output. 
+		Display “Nikolaj Wochnik” on the first line.
+		Display “MSCS” on the second line.
+		Display “STC” on the third line.
+	
+	Define output styles for component.
+		Create container told hold style information.
+			Use entire screen.
+			Vertically center components.
+			Horizontally center components.
+			Change background to yellow.
+		Adjust text parameters.
+			Set font size to 24.
+			Make font bold.
+			Change font color to black.
+			Add space between text.
 
-## Get started
+Export the program to the mobile device.
 
-1. Install dependencies
-
-   ```bash
-   npm install
-   ```
-
-2. Start the app
-
-   ```bash
-    npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Output
+A yellow background encompassing the entire screen.
+Nikolaj Wochnik displays on the first line.
+MSCS on the second.
+STC on the third.
+All text is located in the center of the screen.
