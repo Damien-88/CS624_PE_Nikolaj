@@ -36,4 +36,4 @@ const styles = StyleSheet.create({
 });
 
 // Export HelloWorld component as default export
-export default HelloWorld;
+export default HelloWorld; 
