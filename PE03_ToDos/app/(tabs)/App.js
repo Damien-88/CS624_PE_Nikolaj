@@ -5,6 +5,7 @@ import Heading from './Heading'; // Import Heading component
 import Input from './Input'; // Import Input component
 import Button from './Button'; // Import Button component
 import TodoList from './TodoList'; // Import TodoList component
+import TabBar from './TabBar'; // Import TabBar component
 
 let todoIndex = 0 // Initialize todo index
 
@@ -19,6 +20,29 @@ class App extends Component {
             type: "All", // Filter type for displaying todos
         };
         this.submitTodo = this.submitTodo.bind(this); // Bind submitTodo method to current context
+        this.toggleComplete = this.toggleComplete.bind(this); // Bind toggleComplete method to current context
+        this.deleteTodo = this.deleteTodo.bind(this); // Bind deleteTodo method to current context
+        this.setType = this.setType.bind(this); // Bind setType to current context
+    }
+
+    deleteTodo(todoIndex) {
+        let todos = this.state.todos; // Get current todos from state
+        todos = todos.filter((todo) => todo.todoIndex !== todoIndex); // Filter out deleted todo item
+        this.setState({ todos }); // Update state w/ new todos array
+    }
+
+    toggleComplete(todoIndex) {
+        let todos = this.state.todos; // Get current todos from state
+        todos.forEach((todo) => { // Iterate through todos
+            if (todo.todoIndex === todoIndex) { // Check if todo item matches index
+                todo.completed = !todo.completed; // Toggle completed status
+            }
+        })
+        this.setState({ todos }); // Update state w/ new todos array
+    }
+
+    setType(type) {
+        this.setState({ type }); // Update state w/ new type
     }
 
     // Component lifecycle method to set up any required functionality
@@ -46,14 +70,14 @@ class App extends Component {
 
     // Render method to define UI
     render() {
-        const {inputValue, todos} = this.state; // Destructure inputValue from state
+        const {inputValue, todos, type} = this.state; // Destructure inputValue from state
         return (
             // Main container view w/ styles
             <View style = {styles.container}>
                 {/* Scrollable view/ Allows tapping elements w/out dismissing keyboard */}
                 <ScrollView 
-                    keyboardShouldPersistTaps = "Always" 
-                    style={styles.content}>
+                    keyboardShouldPersistTaps = "always" 
+                    style = {styles.content}>
                     {/* Placeholder View component */}
                     <Heading />
                     {/* Input component for user input */}
@@ -63,11 +87,18 @@ class App extends Component {
                     />
                     <TodoList
                         todos = {todos} // Pass todos array to TodoList component
+                        toggleComplete = {this.toggleComplete} // Pass toggleComplete as prop to mark status
+                        deleteTodo = {this.deleteTodo} // Pass deleTodo method as prop to delete todo
+                        type = {type} // Pass type to type component
                     />
                     <Button 
                         submitTodo = {this.submitTodo} // Pass submitTodo method to Button component
                     /> 
                 </ScrollView>
+                <TabBar 
+                    type = {type} 
+                    setType = {this.setType} 
+                />
             </View>
         );
     }

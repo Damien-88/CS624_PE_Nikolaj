@@ -1,14 +1,27 @@
-import React from 'react' 
-import { View, Text, StyleSheet } from 'react-native'
+import React from 'react';
+import { View, Text, StyleSheet } from 'react-native';
+import TodoButton from './TodoButton';
 
 // Define functional component, takes prop `todo`
-const Todo = ({todo}) => (
+const Todo = ({ todo, toggleComplete, deleteTodo }) => (
     // Create container for todo item w/ styles
   <View style = {styles.todoContainer}> 
     {/* Display todo title inside container */}
     <Text style = {styles.todoText}>
-      {todo.title}
+      {todo.title} {/* Show title of todo item */}
     </Text>
+    {/* Container for buttons */}
+    <View style = {styles.buttons}>
+      <TodoButton
+        name = "Done"
+        complete = {todo.completed} // Indicate status for styling
+        onPress = {() => toggleComplete(todo.todoIndex)} // Toggle status on press
+      />
+      <TodoButton
+        name = "Delete"
+        onPress = {() => deleteTodo(todo.todoIndex)} // Delete todo on press
+      />
+    </View>
   </View>
 )
 
@@ -31,6 +44,13 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 2, height: 2 }, // Set shadow offset
     flexDirection: 'row', // Set flex direction to row
     alignItems: 'center' // Align items to center
+  },
+  // Define styles for buttons
+  buttons: {
+    flex: 1, // Fill space
+    flexDirection: "row", // Arrange in row
+    justifyContent: "flex-end", // Align right end
+    alignItems: "center" // Center vertically
   },
   todoText: {
     fontSize: 17 // Set font size
